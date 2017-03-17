@@ -87,14 +87,13 @@
                         <label>
                             <input id="sendCatalogId"
                                    type="checkbox"
-                                   [(ngModel)]="customer.sendCatalog"
-                                   name="sendCatalog" >
+                                   formControlName="sendCatalog" >
                             Send me your catalog
                         </label>
                     </div>
                 </div>
                 
-                <div *ngIf="customer.sendCatalog">
+                <!--<div *ngIf="customer.sendCatalog">
                     <div class="form-group" >
                         <label class="col-md-2 control-label">Address Type</label>
                         <div class="col-md-8">
@@ -178,7 +177,7 @@
                                    name="zip">
                         </div>
                     </div>
-                </div>
+                </div>-->
 
                 <div class="form-group">
                     <div class="col-md-4 col-md-offset-2">
@@ -189,13 +188,20 @@
                                 Save
                             </button>
                         </span>
+                         <span>
+                            <button class="btn btn-default"
+                                    type="submit"
+                                    (click)="populateTestData()">
+                                Test Data
+                            </button>
+                        </span>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
 </div>
-<br>Dirty: {{ signupForm.dirty }} 
-<br>Touched: {{ signupForm.touched }}
-<br>Valid: {{ signupForm.valid }}
-<br>Value: {{ signupForm.value | json }}
+<br>Dirty: {{ customerForm.dirty }} 
+<br>Touched: {{ customerForm.touched }}
+<br>Valid: {{ customerForm.valid }}
+<br>Value: {{ customerForm.value | json }}
