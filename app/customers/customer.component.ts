@@ -39,4 +39,14 @@ export class CustomerComponent implements OnInit  {
         console.log('Saved: ' + JSON.stringify(this.customerForm.value));
         // only call NG service to hit update endpoint if signupForm.dirty = true
     }
+
+    setNotification(notifyVia: string): void {
+        const phoneControl = this.customerForm.get('phone');
+        if (notifyVia === 'text') {
+            phoneControl.setValidators(Validators.required);
+        } else {
+            phoneControl.clearValidators();
+        }
+        phoneControl.updateValueAndValidity();
+    }
  }
