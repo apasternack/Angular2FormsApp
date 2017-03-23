@@ -36,6 +36,8 @@ export class CustomerComponent implements OnInit  {
             sendCatalog: true
         });
 
+        console.log(this.customerForm.controls.notification.value);
+
     }
 
     populateTestData(): void {

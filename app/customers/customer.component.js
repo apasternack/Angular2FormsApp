@@ -38,6 +38,7 @@ var CustomerComponent = (function () {
             rating: ['', ratingRange(1, 5)],
             sendCatalog: true
         });
+        console.log(this.customerForm.controls.notification.value);
     };
     CustomerComponent.prototype.populateTestData = function () {
         this.customerForm.setValue({
