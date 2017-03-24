@@ -14,6 +14,9 @@ var customer_1 = require('./customer');
 function emailMatcher(c) {
     var emailControl = c.get('email');
     var confirmControl = c.get('confirmEmail');
+    if (emailControl.pristine || confirmControl.pristine) {
+        return null;
+    }
     if (emailControl.value === confirmControl.value) {
         return null;
     }
@@ -40,7 +43,7 @@ var CustomerComponent = (function () {
             emailGroup: this.fb.group({
                 email: ['', [forms_1.Validators.required, forms_1.Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
                 confirmEmail: ['', forms_1.Validators.required],
-            }),
+            }, { validator: emailMatcher }),
             phone: '',
             notification: 'email',
             rating: ['', ratingRange(1, 5)],

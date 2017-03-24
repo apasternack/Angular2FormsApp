@@ -3,9 +3,13 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from
 
 import { Customer } from './customer';
 
-function emailMatcher(c: AbstractControl) {
+function emailMatcher(c: AbstractControl): {[key: string]: boolean} | null {
     let emailControl = c.get('email');
     let confirmControl = c.get('confirmEmail');
+
+    if (emailControl.pristine || confirmControl.pristine) {
+      return null;
+    }
 
     if (emailControl.value === confirmControl.value) {
         return null;
@@ -39,7 +43,7 @@ export class CustomerComponent implements OnInit  {
             emailGroup: this.fb.group({
                 email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
                 confirmEmail: ['', Validators.required],
-            }),
+            }, {validator: emailMatcher}),
             phone: '',
             notification: 'email',
             rating: ['', ratingRange(1,5)],
