@@ -3,6 +3,16 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from
 
 import { Customer } from './customer';
 
+function emailMatcher(c: AbstractControl) {
+    let emailControl = c.get('email');
+    let confirmControl = c.get('confirmEmail');
+
+    if (emailControl.value === confirmControl.value) {
+        return null;
+    }
+    return { 'match': true };
+ }
+
 function ratingRange(min:number, max: number): ValidatorFn {
     return (c: AbstractControl): {[key: string]: boolean} | null => {
         if (c.value !== undefined && (isNaN(c.value) || c.value < min || c.value > max)) {
