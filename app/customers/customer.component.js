@@ -37,6 +37,7 @@ var CustomerComponent = (function () {
         this.customer = new customer_1.Customer();
     }
     CustomerComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.customerForm = this.fb.group({
             firstName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(3)]],
             lastName: ['', [forms_1.Validators.required, forms_1.Validators.maxLength(50)]],
@@ -50,7 +51,7 @@ var CustomerComponent = (function () {
             sendCatalog: true
         });
         this.customerForm.get('notification').valueChanges
-            .subscribe(function (value) { return console.log(value); });
+            .subscribe(function (value) { return _this.setNotification(value); });
     };
     CustomerComponent.prototype.populateTestData = function () {
         this.customerForm.setValue({
