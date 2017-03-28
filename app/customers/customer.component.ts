@@ -57,6 +57,10 @@ export class CustomerComponent implements OnInit  {
 
         this.customerForm.get('notification').valueChanges
             .subscribe(value => this.setNotification(value));
+
+        const emailControl = this.customerForm.get('emailGroup.email');
+        emailControl.valueChanges.subscribe(value =>
+            this.setMessage(emailControl));
     }
 
     populateTestData(): void {
