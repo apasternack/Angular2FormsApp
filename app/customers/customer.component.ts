@@ -33,6 +33,7 @@ function ratingRange(min:number, max: number): ValidatorFn {
 export class CustomerComponent implements OnInit  {
     customerForm: FormGroup;
     customer: Customer= new Customer();
+    emailMessage: string;
 
     private validationMessages = {
         required: 'Please enter your email address.',
@@ -76,6 +77,14 @@ export class CustomerComponent implements OnInit  {
         console.log(this.customerForm);
         console.log('Saved: ' + JSON.stringify(this.customerForm.value));
         // only call NG service to hit update endpoint if signupForm.dirty = true
+    }
+
+    setMessage(c: AbstractControl): void {
+        this.emailMessage = '';
+        if ((c.touched || c.dirty) && c.errors) {
+            this.emailMessage = Object.keys(c.errors).map(key =>
+                this.validationMessages[key]).join(' ');
+        }
     }
 
     setNotification(notifyVia: string): void {

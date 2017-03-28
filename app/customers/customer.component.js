@@ -74,6 +74,15 @@ var CustomerComponent = (function () {
         console.log('Saved: ' + JSON.stringify(this.customerForm.value));
         // only call NG service to hit update endpoint if signupForm.dirty = true
     };
+    CustomerComponent.prototype.setMessage = function (c) {
+        var _this = this;
+        this.emailMessage = '';
+        if ((c.touched || c.dirty) && c.errors) {
+            this.emailMessage = Object.keys(c.errors).map(function (key) {
+                return _this.validationMessages[key];
+            }).join(' ');
+        }
+    };
     CustomerComponent.prototype.setNotification = function (notifyVia) {
         var phoneControl = this.customerForm.get('phone');
         if (notifyVia === 'text') {
