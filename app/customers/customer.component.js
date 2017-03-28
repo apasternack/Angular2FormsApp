@@ -43,7 +43,7 @@ var CustomerComponent = (function () {
             emailGroup: this.fb.group({
                 email: ['', [forms_1.Validators.required, forms_1.Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
                 confirmEmail: ['', forms_1.Validators.required],
-            }, { validator: emailMatcher }),
+            }),
             phone: '',
             notification: 'email',
             rating: ['', ratingRange(1, 5)],

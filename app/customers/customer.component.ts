@@ -43,7 +43,7 @@ export class CustomerComponent implements OnInit  {
             emailGroup: this.fb.group({
                 email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
                 confirmEmail: ['', Validators.required],
-            }, {validator: emailMatcher}),
+            }, ),
             phone: '',
             notification: 'email',
             rating: ['', ratingRange(1,5)],
