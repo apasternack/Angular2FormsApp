@@ -34,6 +34,11 @@ export class CustomerComponent implements OnInit  {
     customerForm: FormGroup;
     customer: Customer= new Customer();
 
+    private validationMessages = {
+        required: 'Please enter your email address.',
+        pattern: 'Please enter a valid email address.'
+    };
+
     constructor(private fb: FormBuilder) { }
 
     ngOnInit(): void {
