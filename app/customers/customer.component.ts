@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
+import 'rxjs/add/operator/debounceTime';
+
 import { Customer } from './customer';
 
 function emailMatcher(c: AbstractControl): {[key: string]: boolean} | null {
