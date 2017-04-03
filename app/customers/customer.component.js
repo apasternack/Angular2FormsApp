@@ -58,7 +58,7 @@ var CustomerComponent = (function () {
         this.customerForm.get('notification').valueChanges
             .subscribe(function (value) { return _this.setNotification(value); });
         var emailControl = this.customerForm.get('emailGroup.email');
-        emailControl.valueChanges.subscribe(function (value) {
+        emailControl.valueChanges.debounceTime(1000).subscribe(function (value) {
             return _this.setMessage(emailControl);
         });
     };
