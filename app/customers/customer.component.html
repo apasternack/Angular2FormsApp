@@ -53,7 +53,7 @@
                 </div>
 
                 <div formGroupName="emailGroup"
-                     [ngClass]="{'has-error': emailMessage }">
+                     [ngClass]="{'has-error': customerForm.get('emailGroup').errors }">
                     <div class="form-group"
                         [ngClass]="{'has-error': emailMessage }">
                         <label class="col-md-2 control-label" 
